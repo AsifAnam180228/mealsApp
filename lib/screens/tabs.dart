@@ -17,19 +17,36 @@ class _TabsScreenState extends State<TabsScreen> {
   String activePageTitle = 'Categories';
   final List<Meal> _favoriteMeals = [];
   void _toggleFavoriteMeal(Meal meal){
-    final _isExisting = _favoriteMeals.contains(meal);
+    final isExisting = _favoriteMeals.contains(meal);
 
-    if(_isExisting){
+    if(isExisting){
       setState(() {
         _favoriteMeals.remove(meal);
+
       });
+      _showInfoMessage('Removed from favorites');
     }
     else{
       setState(() {
         _favoriteMeals.add(meal);
       });
+      _showInfoMessage('Added to favorites');
     }
 
+  }
+  void _showInfoMessage(String message){
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        animation: AnimationController(vsync: ScaffoldMessenger.of(context), animationBehavior:  AnimationBehavior.normal),
+        backgroundColor: Theme.of(context).colorScheme.secondary,
+        content: Text(message),
+        duration: const Duration(seconds: 4),
+        showCloseIcon: true,
+        closeIconColor: Colors.red[800],
+        elevation: 10,
+      ),
+    );
   }
 
   void _selectPage(int index){
