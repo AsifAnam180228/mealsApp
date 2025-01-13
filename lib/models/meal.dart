@@ -23,7 +23,7 @@ class Meal {
     required this.affordability,
     required this.isGlutenFree,
     required this.isLactoseFree,
-    required this.isVegan,
+    required this.isNonVegeterian,
     required this.isVegetarian,
   });
 
@@ -38,6 +38,6 @@ class Meal {
   final Affordability affordability;
   final bool isGlutenFree;
   final bool isLactoseFree;
-  final bool isVegan;
+  final bool isNonVegeterian;
   final bool isVegetarian;
 }
